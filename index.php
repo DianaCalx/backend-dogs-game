@@ -9,7 +9,7 @@
         break;
       }
 
-      if(strtok($_SERVER["REQUEST_URI"], '?')=== '/rest/index.php/dog') {
+      if(strtok($_SERVER["REQUEST_URI"], '?')=== '/') {
         $queries = array();
         parse_str($_SERVER['QUERY_STRING'], $queries);
 
