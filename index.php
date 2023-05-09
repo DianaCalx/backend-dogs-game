@@ -4,12 +4,15 @@
 
   switch ($_SERVER['REQUEST_METHOD']) {
     case 'GET':
-      if($_SERVER['REQUEST_URI'] === '/dogs') {
+
+      echo $_SERVER['REQUEST_URI'];
+
+      if($_SERVER['REQUEST_URI'] === '/') {
         get_dogs();
         break;
       }
 
-      if(strtok($_SERVER["REQUEST_URI"], '?')=== '/dog') {
+      if(strtok($_SERVER["REQUEST_URI"], '?')=== '/') {
         $queries = array();
         parse_str($_SERVER['QUERY_STRING'], $queries);
 
