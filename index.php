@@ -7,6 +7,13 @@
 
       echo $_SERVER['REQUEST_URI'];
 
+      if($_SERVER['REQUEST_URI'] === '/dogs') {
+        echo "hello";
+        get_dogs();
+        break;
+      }
+
+
       if($_SERVER['REQUEST_URI'] === '/') {
         get_dogs();
         break;
