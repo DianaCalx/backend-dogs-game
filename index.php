@@ -11,7 +11,7 @@
         break;
       }
 
-      if(strtok($_SERVER["REQUEST_URI"], '?')=== '/dog') {
+      if(strtok($_SERVER["REQUEST_URI"], '?') === '/dog') {
         $queries = array();
         parse_str($_SERVER['QUERY_STRING'], $queries);
 
@@ -20,16 +20,8 @@
         break;
       }
 
-      break;
-    case 'POST':
-      // Handle POST requests
-      break;
-    case 'PUT':
-      // Handle PUT requests
-      break;
-    case 'DELETE':
-      // Handle DELETE requests
+      echo "Error 404- Not Found";
+
       break;
   }
-
 ?>
