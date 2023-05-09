@@ -4,7 +4,7 @@
 
   switch ($_SERVER['REQUEST_METHOD']) {
     case 'GET':
-      if($_SERVER['REQUEST_URI'] === '/rest/index.php/dogs') {
+      if($_SERVER['REQUEST_URI'] === '/dogs') {
         get_dogs();
         break;
       }
