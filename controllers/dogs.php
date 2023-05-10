@@ -1,8 +1,11 @@
+
 <?php
     function get_dogs() {
         $ch = curl_init();
 
-        curl_setopt($ch,CURLOPT_URL,'https://dog.ceo/api/breeds/list/all');
+        $url = BASE_API_URL.'/breeds/list/all';
+
+        curl_setopt($ch,CURLOPT_URL,$url);
         
         curl_exec($ch);
 
@@ -14,8 +17,8 @@
     function get_dog($breed) {
         $ch = curl_init();
 
-        $url = "https://dog.ceo/api/breed/$breed/images/random";
-
+        $url = BASE_API_URL.'/breed/'.$breed.'/images/random';
+        
         curl_setopt($ch,CURLOPT_URL, $url);
         
         curl_exec($ch);
