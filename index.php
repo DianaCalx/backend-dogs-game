@@ -2,26 +2,41 @@
 <?php
   require_once('controllers/dogs.php');
   require_once('config.php');
+  require_once('utils/variables.php');
+  require_once('utils/url.php');
 
   switch ($_SERVER['REQUEST_METHOD']) {
     case 'GET':
 
-      if($_SERVER['REQUEST_URI'] === '/dogs') {
-     
-        get_dogs();
+      if($_SERVER['REQUEST_URI'] === DOGS_ROUTE) {
+        try{
+          get_dogs();
+        }catch(Exception $e) {
+          echo "Error: ".$e->getMessage();
+        } 
+
         break;
       }
 
-      if(strtok($_SERVER["REQUEST_URI"], '?') === '/dog') {
-        $queries = array();
-        parse_str($_SERVER['QUERY_STRING'], $queries);
+      if(get_url_without_query_params($_SERVER["REQUEST_URI"]) === DOG_ROUTE) {
+  
+        try {
+          $queries = [];        
+          parse_str($_SERVER['QUERY_STRING'], $queries);
 
-        $breed = $queries['breed'];
-        get_dog($breed);
+          if (!isset($queries['breed'])) {
+            throw new Exception("breed query param is missing");
+          }
+          
+          $breed = $queries['breed'];
+          get_dog($breed);
+
+        } catch(Exception $e) {
+          echo "Error: ".$e->getMessage();
+        }
+        
         break;
       }
-
-      echo "Error 404- Not Found";
 
       break;
   }
